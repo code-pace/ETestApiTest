@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="Suite1" verbose="1" thread-count="1" parallel="tests">
+    <parameter name="url" value="http://localhost:5000/admin/test"/>
+    <parameter name="env" value="staging"/>
+
+    <test name="Create Etest" preserve-order="true">
+        <classes>
+            <class name="etestHandlers.CreateETest">
+                <methods>
+                    <include name="createTestWithNoTitle"/>
+                    <include name="createTestWithExistingTitle"/>
+                    <include name="createTestWithNewTitle"/>
+                    <include name="confirmTestCreatedById"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Update Etest" preserve-order="true">
+        <classes>
+            <class name="etestHandlers.UpdateETest" >
+                <methods>
+                    <include name="updateTestNoTitle"/>
+                    <include name="updateTestNonExistingId"/>
+                    <include name="updateTestNoId"/>
+                    <include name="updateTest"/>
+                    <include name="confirmTestUpdatedById"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Delete Etest" preserve-order="true">
+        <classes>
+            <class name="etestHandlers.DeleteEtest" >
+                <methods>
+                    <include name="deleteTestNoId"/>
+                    <include name="deleteTestInvalidId"/>
+                    <include name="deleteTest"/>
+                    <include name="confirmDeletedTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
